@@ -17,7 +17,7 @@ class BaseScaffold extends StatelessWidget {
           image: DecorationImage(
             image: Assets.images.pageBg.provider(),
             fit: BoxFit.fill,
-            opacity: 0.9,
+            opacity: 0.7,
           ),
         ),
         padding: EdgeInsets.symmetric(vertical: 24),

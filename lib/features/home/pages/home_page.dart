@@ -1,10 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guexer/core/routes.gr.dart';
 import 'package:guexer/features/app/widgets/base_scaffold.dart';
-import 'package:guexer/features/gameplay/dialogs/pause_dialog.dart';
+import 'package:guexer/features/game/cubits/game_cubit.dart';
 import 'package:guexer/features/home/dialogs/playtype_dialog.dart';
 import 'package:guexer/shared/widgets/custom_button.dart';
 import 'package:guexer/shared/widgets/user_profile_button.dart';
 
+@RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -45,19 +49,29 @@ class HomePage extends StatelessWidget {
             right: 0,
             child: Column(
               children: [
-                CustomButton(text: "PLAY", onTap: () {
+                CustomButton(
+                  text: "PLAY",
+                  onTap: () {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return PlayTypeDialog();
+                        return PlayTypeDialog(
+                          onGameModeSelected: (gameMode) {
+                            // set game mode to bloc
+                            context.read<GameCubit>().setGameMode(
+                              gameMode: gameMode,
+                            );
+                            //Navigate
+                            context.router.push(
+                              GameConfigRoute(),
+                            );
+                          },
+                        );
                       },
                     );
                   },
                 ),
-                CustomButton(
-                  text: "LEADERBOARD",
-                  onTap: null,
-                ),
+                CustomButton(text: "LEADERBOARD", onTap: null),
                 CustomButton(
                   text: "HELP",
                   onTap: () {

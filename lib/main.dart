@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:guexer/features/home/pages/home_page.dart';
+import 'package:guexer/core/routes.dart';
+import 'package:guexer/features/app/cubits/app_cubit.dart';
+import 'package:guexer/features/game/cubits/game_cubit.dart';
+import 'package:guexer/shared/constants.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
+    final appRouter = AppRouter();
+    
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -15,19 +21,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     
-    return MaterialApp(
-      title: 'Guexer',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.orange,
-          secondary: const Color(0XFFE6A479),
-          tertiary: const Color(0XFF723412),
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AppCubit()),
+        BlocProvider(create: (context) => GameCubit()),
+      ],
+      child: MaterialApp.router(
+        title: AppConstants.appName,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.orange,
+            secondary: const Color(0XFFE6A479),
+            tertiary: const Color(0XFF723412),
+          ),
+          useMaterial3: true,
+          textTheme: GoogleFonts.meriendaTextTheme(),
         ),
-        useMaterial3: true,
-        textTheme: GoogleFonts.meriendaTextTheme(),
+        debugShowCheckedModeBanner: false,
+        routerConfig: appRouter.config(),
       ),
-      debugShowCheckedModeBanner: false,
-      home: const HomePage(),
     );
   }
 }

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guexer/data/models/game_mode.dart';
 import 'package:guexer/shared/widgets/custom_button.dart';
 
 class PlayTypeDialog extends StatelessWidget {
   const PlayTypeDialog({
-    super.key,
+    super.key, required this.onGameModeSelected,
   });
+
+  final Function(GameMode) onGameModeSelected;
 
 
   @override
@@ -20,20 +23,13 @@ class PlayTypeDialog extends StatelessWidget {
           children: [
             CustomButton(
               text: "Single Player",
-              onTap: () {
-                // return response to ui
-              },
+              onTap: () => onGameModeSelected(GameMode.single),
             ),
             // ToggleSFXButton(animationController: animationController),
             CustomButton(
               text: "Tournament",
               onTap: 
-              () {
-              //   Navigator.push(
-              //     context,
-              //     PreviewPage.route(),
-              //   );
-              },
+              () => onGameModeSelected(GameMode.tournament),
             ),],
         ),
       ),
