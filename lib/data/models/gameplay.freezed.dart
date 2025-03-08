@@ -22,7 +22,8 @@ GamePlay _$GamePlayFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GamePlay {
   String get id => throw _privateConstructorUsedError;
-  int get totalScore => throw _privateConstructorUsedError;
+  String get theme => throw _privateConstructorUsedError;
+  int get duration => throw _privateConstructorUsedError;
 
   /// Serializes this GamePlay to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +40,7 @@ abstract class $GamePlayCopyWith<$Res> {
   factory $GamePlayCopyWith(GamePlay value, $Res Function(GamePlay) then) =
       _$GamePlayCopyWithImpl<$Res, GamePlay>;
   @useResult
-  $Res call({String id, int totalScore});
+  $Res call({String id, String theme, int duration});
 }
 
 /// @nodoc
@@ -56,7 +57,11 @@ class _$GamePlayCopyWithImpl<$Res, $Val extends GamePlay>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? totalScore = null}) {
+  $Res call({
+    Object? id = null,
+    Object? theme = null,
+    Object? duration = null,
+  }) {
     return _then(
       _value.copyWith(
             id:
@@ -64,10 +69,15 @@ class _$GamePlayCopyWithImpl<$Res, $Val extends GamePlay>
                     ? _value.id
                     : id // ignore: cast_nullable_to_non_nullable
                         as String,
-            totalScore:
-                null == totalScore
-                    ? _value.totalScore
-                    : totalScore // ignore: cast_nullable_to_non_nullable
+            theme:
+                null == theme
+                    ? _value.theme
+                    : theme // ignore: cast_nullable_to_non_nullable
+                        as String,
+            duration:
+                null == duration
+                    ? _value.duration
+                    : duration // ignore: cast_nullable_to_non_nullable
                         as int,
           )
           as $Val,
@@ -84,7 +94,7 @@ abstract class _$$GamePlayImplCopyWith<$Res>
   ) = __$$GamePlayImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, int totalScore});
+  $Res call({String id, String theme, int duration});
 }
 
 /// @nodoc
@@ -100,7 +110,11 @@ class __$$GamePlayImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? totalScore = null}) {
+  $Res call({
+    Object? id = null,
+    Object? theme = null,
+    Object? duration = null,
+  }) {
     return _then(
       _$GamePlayImpl(
         id:
@@ -108,10 +122,15 @@ class __$$GamePlayImplCopyWithImpl<$Res>
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
                     as String,
-        totalScore:
-            null == totalScore
-                ? _value.totalScore
-                : totalScore // ignore: cast_nullable_to_non_nullable
+        theme:
+            null == theme
+                ? _value.theme
+                : theme // ignore: cast_nullable_to_non_nullable
+                    as String,
+        duration:
+            null == duration
+                ? _value.duration
+                : duration // ignore: cast_nullable_to_non_nullable
                     as int,
       ),
     );
@@ -121,7 +140,11 @@ class __$$GamePlayImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GamePlayImpl implements _GamePlay {
-  const _$GamePlayImpl({required this.id, required this.totalScore});
+  const _$GamePlayImpl({
+    required this.id,
+    required this.theme,
+    required this.duration,
+  });
 
   factory _$GamePlayImpl.fromJson(Map<String, dynamic> json) =>
       _$$GamePlayImplFromJson(json);
@@ -129,11 +152,13 @@ class _$GamePlayImpl implements _GamePlay {
   @override
   final String id;
   @override
-  final int totalScore;
+  final String theme;
+  @override
+  final int duration;
 
   @override
   String toString() {
-    return 'GamePlay(id: $id, totalScore: $totalScore)';
+    return 'GamePlay(id: $id, theme: $theme, duration: $duration)';
   }
 
   @override
@@ -142,13 +167,14 @@ class _$GamePlayImpl implements _GamePlay {
         (other.runtimeType == runtimeType &&
             other is _$GamePlayImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.totalScore, totalScore) ||
-                other.totalScore == totalScore));
+            (identical(other.theme, theme) || other.theme == theme) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, totalScore);
+  int get hashCode => Object.hash(runtimeType, id, theme, duration);
 
   /// Create a copy of GamePlay
   /// with the given fields replaced by the non-null parameter values.
@@ -167,7 +193,8 @@ class _$GamePlayImpl implements _GamePlay {
 abstract class _GamePlay implements GamePlay {
   const factory _GamePlay({
     required final String id,
-    required final int totalScore,
+    required final String theme,
+    required final int duration,
   }) = _$GamePlayImpl;
 
   factory _GamePlay.fromJson(Map<String, dynamic> json) =
@@ -176,7 +203,9 @@ abstract class _GamePlay implements GamePlay {
   @override
   String get id;
   @override
-  int get totalScore;
+  String get theme;
+  @override
+  int get duration;
 
   /// Create a copy of GamePlay
   /// with the given fields replaced by the non-null parameter values.

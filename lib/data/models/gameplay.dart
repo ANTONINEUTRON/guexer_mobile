@@ -7,7 +7,8 @@ part 'gameplay.freezed.dart';
 class GamePlay with _$GamePlay {
   const factory GamePlay({
     required String id,
-    required int totalScore,
+    required String theme,
+    required int duration,
   }) = _GamePlay;
 
   factory GamePlay.fromJson(Map<String, dynamic> json) => _$GamePlayFromJson(json);

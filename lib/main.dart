@@ -11,8 +11,8 @@ void main() {
   runApp(const MyApp());
 }
 
-    final appRouter = AppRouter();
-    
+final appRouter = AppRouter();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-    
 
     return MultiBlocProvider(
       providers: [

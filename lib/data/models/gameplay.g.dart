@@ -9,8 +9,13 @@ part of 'gameplay.dart';
 _$GamePlayImpl _$$GamePlayImplFromJson(Map<String, dynamic> json) =>
     _$GamePlayImpl(
       id: json['id'] as String,
-      totalScore: (json['totalScore'] as num).toInt(),
+      theme: json['theme'] as String,
+      duration: (json['duration'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$GamePlayImplToJson(_$GamePlayImpl instance) =>
-    <String, dynamic>{'id': instance.id, 'totalScore': instance.totalScore};
+    <String, dynamic>{
+      'id': instance.id,
+      'theme': instance.theme,
+      'duration': instance.duration,
+    };

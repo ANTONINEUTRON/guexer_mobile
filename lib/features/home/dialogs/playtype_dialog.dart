@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:guexer/data/models/game_mode.dart';
+import 'package:guexer/data/enums/game_mode.dart';
 import 'package:guexer/shared/widgets/custom_button.dart';
 
 class PlayTypeDialog extends StatelessWidget {
